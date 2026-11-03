@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070908;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1c2e24;
+  border: 1px solid #10b981;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* CRT Scanline Effect */
+.crt-scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.45) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.04),
+    rgba(0, 255, 0, 0.02),
+    rgba(0, 0, 255, 0.04)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Gritty Film Grain Overlay */
+.film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Redacted text effect */
+.redacted-bar {
+  background-color: #000;
+  color: transparent;
+  user-select: none;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  padding: 0 4px;
+}
+
+.redacted-bar:hover {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  user-select: text;
+}
+
+/* Caution tape pattern */
+.hazard-stripe {
+  background: repeating-linear-gradient(
+    -45deg,
+    #fbbf24,
+    #fbbf24 12px,
+    #1c1917 12px,
+    #1c1917 24px
+  );
+}
+
+.hazard-stripe-green {
+  background: repeating-linear-gradient(
+    -45deg,
+    #10b981,
+    #10b981 10px,
+    #0a0e0c 10px,
+    #0a0e0c 20px
+  );
+}
+
+/* Rubber Stamp Styling */
+.rubber-stamp {
+  font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.15em;
+  font-weight: 800;
+  border-width: 3px;
+  border-style: solid;
+  display: inline-block;
+  padding: 4px 14px;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0.6) 100%);
+}
+
+/* Periodic table element glow */
+.element-glow {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.35), inset 0 0 10px rgba(16, 185, 129, 0.2);
+}
+
+/* Subtle glow text */
+.glow-text-green {
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.7), 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.glow-text-yellow {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.7), 0 0 20px rgba(245, 158, 11, 0.3);
+}
+
+/* 3D Tilt Card Perspective Container */
+.tilt-card-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Viewport Scroll Reveal Classes */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
